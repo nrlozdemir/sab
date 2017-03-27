@@ -1,0 +1,32 @@
+address_book_homepage:
+    path:  /
+    defaults: { _controller: AddressBookBundle:Default:index }
+
+address_book_addGroup:
+    path: /add_group
+    defaults: { _controller: AddressBookBundle:Default:addGroup }
+
+address_book_groupList:
+    path: /group_list
+    defaults: { _controller: AddressBookBundle:Default:groupList }
+
+address_book_groupDetails:
+    path: /group_details/{groupId}
+    defaults: { _controller: AddressBookBundle:Default:groupDetails }
+    requirements:
+        groupId: '\d+'
+
+address_book_addPerson:
+    path: /add_person
+    defaults: { _controller: AddressBookBundle:Default:addPerson }
+
+address_book_personList:
+    path: /person_list
+    defaults: { _controller: AddressBookBundle:Default:personList }
+
+address_book_personDetails:
+    path: /person_details/{personId}
+    defaults: { _controller: AddressBookBundle:Default:personDetails }
+    requirements:
+        personId: '\d+'
+

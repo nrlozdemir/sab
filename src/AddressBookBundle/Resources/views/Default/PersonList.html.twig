@@ -1,0 +1,62 @@
+{% extends "application.html.twig" %}
+
+{% block showcaseDescription %}Person List{% endblock showcaseDescription %}
+
+{% block applicationView %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                <form action="{{ path('address_book_personList') }}" method="post">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="find_by_name">Search By Name :</label>
+                                <input type="text" class="form-control" name="find_by_name" id="find_by_name" value="{{ findByNameValue }}">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="find_by_email">Search By Email :</label>
+                                <input type="text" class="form-control" name="find_by_email" id="find_by_email" value="{{ findByEmailValue }}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pull-right">
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Data Table</div>
+                    <div class="panel-body">
+                        <table class="table table-bordered table-condensed table-hover table-responsive table-striped">
+                            <tr>
+                                <th width="15%">Peron ID</th>
+                                <th width="35%">Person First Name</th>
+                                <th width="35%">Person Last Name</th>
+                                <th width="15%">Actions</th>
+                            </tr>
+                            {% for i in persons %}
+                                <tr>
+                                    <td>{{ i.id }}</td>
+                                    <td>{{ i.firstName }}</td>
+                                    <td>{{ i.lastName }}</td>
+                                    <td><a href="{{ path('address_book_personDetails', {'personId': i.id}) }}">View Groups</a></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock applicationView %}

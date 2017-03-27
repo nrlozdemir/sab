@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AddressBookBundle\Entity\GroupRelationships" table="group_relationships">
+    <indexes>
+      <index name="person" columns="person"/>
+      <index name="group_id" columns="group_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="unique" columns="group_id,person"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="person" target-entity="Persons" fetch="LAZY">
+      <join-columns>
+        <join-column name="person" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="group" target-entity="Groups" fetch="LAZY">
+      <join-columns>
+        <join-column name="group_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

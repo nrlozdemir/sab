@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AddressBookBundle\Entity\PhoneNumbers" table="phone_numbers">
+    <indexes>
+      <index name="person" columns="person"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="unique_both" columns="person,phone_number"/>
+      <unique-constraint name="phone_number" columns="phone_number"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="phoneNumber" type="string" column="phone_number" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="person" target-entity="Persons" fetch="LAZY">
+      <join-columns>
+        <join-column name="person" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

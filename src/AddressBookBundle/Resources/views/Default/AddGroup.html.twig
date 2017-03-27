@@ -1,0 +1,42 @@
+{% extends "application.html.twig" %}
+
+{% block showcaseDescription %}New Group Form{% endblock showcaseDescription %}
+
+{% block javascriptCode %}
+    <script type="text/javascript">
+
+    </script>
+{% endblock javascriptCode %}
+
+{% block applicationView %}
+    <div class="container">
+        {% if inserted == true %}
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="bg-success">The group added successfully.</p>
+                </div>
+            </div>
+        {% endif %}
+        <form action="{{ path('address_book_addGroup') }}" method="post">
+            <div class="row">
+                <div class="col-md-6 col-xs-12 col-sm-6 col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Basic Data</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="name">Group Name :</label>
+                                <input id="name" type="text" name="name" class="form-control col-md-12">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock applicationView %}

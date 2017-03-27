@@ -1,0 +1,33 @@
+{% extends "application.html.twig" %}
+
+{% block showcaseDescription %}Group Details (Members of This Group){% endblock showcaseDescription %}
+
+{% block applicationView %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Data Table</div>
+                    <div class="panel-body">
+                        <table class="table table-bordered table-condensed table-hover table-responsive table-striped">
+                            <tr>
+                                <th width="15%">Person ID</th>
+                                <th width="35%">Person First Name</th>
+                                <th width="35%">Person Last Name</th>
+                                <th width="15%">Actions</th>
+                            </tr>
+                            {% for i in persons %}
+                                <tr>
+                                    <td>{{ i.id }}</td>
+                                    <td>{{ i.firstName }}</td>
+                                    <td>{{ i.lastName }}</td>
+                                    <td><a href="{{ path('address_book_personDetails', {'personId': i.id}) }}">View Details</a></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock applicationView %}
